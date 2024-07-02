@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // in order to run with node 20 (e.g with nvm 20) the "runtimeVersion" prop can be used,
+        // but it means that the "type" must be "node", so cannot use "command",
+        // so use "runtimeExecutable" and "runtimeArgs"  to achive same Result
+        {
+            "name": "Next.js: debug server-side - node 20",
+            "type": "node",
+            "request": "launch",
+            "runtimeVersion": "20",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run", "dev"
+            ],
+          },
+
+          // from Next.js site - but requires the node version to be already set to ^18 or ^20
+        {
+            "name": "Next.js: debug server-side",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev"
+          },
+          {
+            "name": "Next.js: debug client-side",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000"
+          },
+          {
+            "name": "Next.js: debug full stack",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev",
+            "serverReadyAction": {
+              "pattern": "- Local:.+(https?://.+)",
+              "uriFormat": "%s",
+              "action": "debugWithChrome"
+            }
+          }
+    ]
+}
